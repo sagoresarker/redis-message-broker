@@ -6,10 +6,10 @@ type Redis struct {
 	RedisClient *redis.Client
 }
 
-func NewRedis() Redis {
+func NewRedis(config Config) Redis {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "",
+		Addr:     config.RedisHost + ":" + config.RedisPort,
+		Password: config.RedisPassword,
 		DB:       0,
 	})
 
